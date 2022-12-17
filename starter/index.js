@@ -95,7 +95,26 @@ for (i = 0; i < finances.length; i++) {
   m = m + 1;
 }
 
+var profit_loss = [];
+var j = 0;
+//create a separate array to store between dates and p&L difference
+//calculate the sum of changes and divide by number of months
+for (i = 0; i < finances.length - 1; i++) {
+  profit_loss.push([finances[j + 1][0], finances[j + 1][1] - finances[j][1]]);
+  j = i + 1;
+}
+//To get Total change in profits
+var k = 0;
+var sum_profit_loss = 0;
+for (i = 0; i < profit_loss.length; i++) {
+  sum_profit_loss = sum_profit_loss + profit_loss[k][1];
+  k = k + 1;
+}
+
 console.log("Financial Analysis");
 console.log("-------------------------");
 console.log("Total Months: " + finances.length);
 console.log("Total: $" + net_prof_loss);
+console.log(
+  "Average Change: $" + (sum_profit_loss / profit_loss.length).toFixed(2)
+);
