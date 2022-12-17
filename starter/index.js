@@ -111,6 +111,34 @@ for (i = 0; i < profit_loss.length; i++) {
   k = k + 1;
 }
 
+//Initialisng for loop for first vsriable in profit_loss array
+//Then using for loop to iterate
+incr_ammount_prev = profit_loss[0][1];
+var n = 0;
+for (i = 0; i < profit_loss.length; i++) {
+  incr_ammount_curr = profit_loss[n][1];
+  if (incr_ammount_curr > incr_ammount_prev) {
+    incr_ammount_prev = incr_ammount_curr;
+    greatest_increase_ammount = incr_ammount_curr;
+    greatest_increase_month = profit_loss[n][0];
+  }
+  n++;
+}
+
+//Initialisng for loop for first vsriable in profit_loss array
+//Then using for loop to iterate
+decr_ammount_prev = profit_loss[0][1];
+var n = 0;
+for (i = 0; i < profit_loss.length; i++) {
+  decr_ammount_curr = profit_loss[n][1];
+  if (decr_ammount_curr < decr_ammount_prev) {
+    decr_ammount_prev = decr_ammount_curr;
+    greatest_decrease_ammount = decr_ammount_curr;
+    greatest_decrease_month = profit_loss[n][0];
+  }
+  n++;
+}
+
 console.log("Financial Analysis");
 console.log("-------------------------");
 console.log("Total Months: " + finances.length);
@@ -118,3 +146,7 @@ console.log("Total: $" + net_prof_loss);
 console.log(
   "Average Change: $" + (sum_profit_loss / profit_loss.length).toFixed(2)
 );
+console.log("Greatest Increase in Profits: " + greatest_increase_month);
+console.log("($" + greatest_increase_ammount + ")");
+console.log("Greatest Decrease in Profits: " + greatest_decrease_month);
+console.log("($" + greatest_decrease_ammount + ")");
